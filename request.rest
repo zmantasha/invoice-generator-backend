@@ -1,0 +1,152 @@
+#  Create Invoice
+
+###
+POST http://localhost:8002/api/v1/invoice/invoices
+Content-Type: application/json
+
+{
+   "userId":"6773c9b05a9e0db4815a2949",
+  "senderDetails": {
+    "logo": "http://example.com/logo.png",
+    "name": "My Business Name",
+    "address": "123 Business St, Business City, BC 12345",
+    "email": "contact@mybusiness.com",
+    "phone": "+1234567890"
+  },
+  "recipientDetails": {
+    "billTo": {
+      "name": "",
+      "address": "456 Client Rd, Client City, CC 67890",
+      "email": "johndoe@example.com",
+      "phone": "+0987654321"
+    },
+    "shipTo": {
+      "name": "John Doe",
+      "address": "456 Client Rd, Client City, CC 67890",
+      "email": "johndoe@example.com",
+      "phone": "+0987654321"
+    }
+  },
+  "invoiceDetails": {
+    "number": "INV-1001",
+    "date": "2024-12-23",
+    "dueDate": "2025-01-23",
+    "paymentTerms": "Net 30",
+    "poNumber": "PO-12345",
+    "currency": "USD"
+  },
+  "items": [
+    { 
+      "id":"1",
+      "description": "Product 1",
+      "quantity": 2,
+      "rate": 50,
+      "amount": 100
+    },
+    {  "id":"2",
+      "description": "Product 2",
+      "quantity": 1,
+      "rate": 150,
+      "amount": 150
+    }
+  ],
+  "totals": {
+    "subtotal": 250,
+    "tax": 25,
+    "taxRate": 10,
+    "shipping": 15,
+    "discount": 20,
+    "discountType": "percentage",
+    "total": 270,
+    "amountPaid": 50,
+    "balanceDue": 220
+  },
+  "notes": "Thank you for your business!",
+  "terms": "Payment is due within 30 days of the invoice date."
+}
+
+
+# {
+#   "userId": "67653c2ccee8704100532a2a",
+#   "businessName": "Test Business Solutions",
+#   "businessAddress": "123 Test Road, Test City, TS 12345",
+#   "billTo": "John Smith",
+#   "billingAddress": "456 Billing St, Billing City, BC 12345",
+#   "shippingRecipient": "Jane Smith",
+#   "shippingAddress": "789 Shipping Lane, Shipping City, SC 54321",
+#   "invoiceNumber": "INV-2024-001",
+#   "date": "2024-06-20",
+#   "paymentTerms": "Net 30",
+#   "dueDate": "2024-07-20",
+#   "poNumber": "PO-56789",
+#   "items": [
+#     {
+#       "itemDescription": "Product 1",
+#       "quantity": 10,
+#       "rate": 50,
+#       "amount": 50
+#     },
+#     {
+#       "itemDescription": "Service 1",
+#       "quantity": 5,
+#       "rate": 100,
+#       "amount": 500
+#     }
+#   ],
+#   "notes": "This is a test invoice for API testing.",
+#   "terms": "Payment due within 30 days of issue.",
+#   "subtotal": 1000,
+#   "tax": 100,
+#   "discount": 50,
+#   "shipping": 20,
+#   "total": 1070,
+#   "amountPaid": 500,
+#   "balanceDue": 570
+# }
+
+
+// Update Invoice
+###
+PUT http://localhost:8002/api/v1/invoice/invoices/67741cde5a9e0db4815a2a90
+Content-Type: application/json
+
+{
+    "recipientDetails": {
+"billTo": {
+       "name": "mantasha Doe",
+      "address": "456 Client Rd, Client City, CC 67890",
+      "email": "johndoe@example.com",
+      "phone": "+0987654321"
+}}
+}
+###
+PUT http://localhost:8002/api/v1/invoice/invoices/67847978c3ef23b38fe0f550/status
+Content-Type: application/json
+
+{
+ "status":"paid"
+}
+
+
+// Get All Invoice
+###
+get http://localhost:8002/api/v1/invoice/invoices
+Content-Type: application/json
+
+
+// Get Invoice By Id
+###
+get http://localhost:8002/api/v1/invoice/invoices/userId/6773c9b05a9e0db4815a2949
+Content-Type: application/json
+
+// Get Invoice By Id
+###
+get http://localhost:8002/api/v1/invoice/invoices/677433685a9e0db4815a31b9
+Content-Type: application/json
+
+
+//Delete Invoice By Id
+###
+Delete http://localhost:8002/api/v1/invoice/invoices/67653d14cee8704100532a3c
+Content-Type: application/json
+
